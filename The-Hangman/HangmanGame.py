@@ -15,10 +15,7 @@ words = ['giraffe', 'house', 'flat', 'dog', 'cat', 'elephant', 'computer', 'keyb
 
 # Function that clears the screen
 def clear():
-    try:
-        os.system('cls') # If the OS is Windows.
-    except:
-        os.system('clear') # If the OS is Linux or MacOS.
+    os.system('clear') # If the OS is Linux or MacOS.
 
 # Function that prints a new line.
 def new():
@@ -26,6 +23,7 @@ def new():
 
 # Function that appends a random word to a variable.
 def random_word():
+    global secretWord
     secretWord = random.choice(words)
 
 # Function that introduces the user to the game.
@@ -52,7 +50,7 @@ def hangman(secret):
         guess = input('Guess a letter: ')
         # Checking if the user inputed a letter or not.
         if len(guess) == 1 and guess.isalpha():
-            if guess not in secret:
+            if guess not in secretWord:
                 print('Guess not in word!')
                 tries -= 1
                 guesses.append(guess) # Appending the guess to the list of all guessed letters.
